@@ -80,10 +80,10 @@ fieldset p{
     display: flex;
     justify-content: flex-start;
     margin: 60px;
-    background-color: red;
+    background-color: rgb(194, 0, 0);
     border-radius: 3px;
     color: white;
-    width: 250px;
+    width: auto;
 }
 
 input{
@@ -106,4 +106,23 @@ button:hover{
 
 #resultado{
     display: flex;
+    text-align: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: auto;
+}
+
+.result{
+    width: 70px;
+    height: 70px;
+    margin: 5px;
+    padding: 5px;
+    border: 5px solid transparent;
+    border-radius: 10px;
+    justify-content: center;
+    display: flex;
+    margin-top: 10px;
+    background-color: dodgerblue;
+    font-weight: bold;
+    
 }
