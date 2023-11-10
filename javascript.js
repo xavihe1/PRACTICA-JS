@@ -3,9 +3,9 @@ function generarNumeroAleatorio() {
     return Math.floor(10000 + Math.random() * 90000);
 }
 
-
-var numeroSecreto = generarNumeroAleatorio().toString();
+var numeroSecreto = generarNumeroAleatorio();
 var intentosRestantes = 5;
+console.log(numeroSecreto)
 
 //Comprovem el nombre ingresat per l'usuari
 function comprovarNum() {
@@ -24,7 +24,7 @@ function comprovarNum() {
 
     
     if (intentosRestantes === 0) {
-        alert('¡Se acabaron los intentos! El número secreto era: ' + numeroSecreto);
+        alert('¡Te has quedado sin intentos, el numero secreto era: ' + numeroSecreto);
         location.reload(); 
         return;
     }
