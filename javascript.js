@@ -1,3 +1,48 @@
+const iteracionsMax = 10;
+let numSecreto = generateSecretNum();
+let iteracions = 1;
+
+function generateSecretNum() {
+    let nums = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    let secretNum = '';
+
+    for (let i = 0; i < 5; i++) {
+        let randomNum = Math.floor(Math.random() * nums.length);
+        secretNum += nums.splice(randomNum, 1)[0];
+    }
+    return secretNum;
+}
+
+const cartaElements = document.querySelectorAll('.carta');
+
+if (numSecreto.length === 5 && cartaElements.length >= 5) {
+    for (let i = 0; i < 5; i++) {
+        cartaElements[i].textContent = numSecreto[i];
+    }
+}
+
+function intentosRestantes() {
+    const intentosRestantesElement = document.getElementById('intentosRestantes');
+    const remainingAttempts = iteracionsMax - iteracions;
+    intentosRestantesElement.textContent = remainingAttempts;
+}
+
+function comprobarNum() {
+    const inputElement = document.getElementById('01234');
+    const inputValue = inputElement.value;
+
+    if (inputValue.length === 5) {
+        if (inputValue === numSecreto) {
+            document.getElementById('informacion').innerHTML = '¡Has adivinado el número!';
+        } else {
+            document.getElementById('informacion').innerHTML = 'Incorrecto, sigue intentando.';
+        }
+    } else {
+        document.getElementById('informacion').innerHTML = 'Ingrese un número de 5 dígitos';
+    }
+
+    iteracions++
+    intentosRestantes();
 //Generem un numero aleatori de 5 digits
 function generarNumAleatori() {
     let numeroAleatori = "";
@@ -21,16 +66,16 @@ function comprovarNum() {
         return;
     }
 
-    
+
     compararNumeros(numeroUsuari);
 
     //Reduim el nombre d'intents en 1 per cada cop que l'usuari ingresa un numero
     intentosRestantes--;
 
-    
+
     document.getElementById("intentosRestantes").innerText = intentosRestantes;
 
-    
+
     if (intentosRestantes === 0) {
         alert("¡Has agotado tus intentos! El número secreto era " + numeroAleatori + ".");
         reiniciarJuego();
@@ -79,4 +124,5 @@ function reiniciarJuego() {
     while (resultadoElement.firstChild) {
         resultadoElement.removeChild(resultadoElement.firstChild);
     }
+}
 }
